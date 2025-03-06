@@ -1,0 +1,879 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 8
+  defaultDamping Damping {
+  }
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        0.2
+      ]
+      frictionRotation 0.2 0.2
+      bounce 0
+      bounceVelocity 0
+      softCFM 1e-07
+      maxContactJoints 539
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.09444070086896739 0.045375533720791277 -0.9944958596992405 1.7337673915829965
+  position 1.3304640927643478 2.325005903070712 1.1792680335429657
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 30 30
+}
+DEF Supervisor Robot {
+  children [
+    Receiver {
+      name "receiver_1"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Emitter {
+      name "emitter_2"
+      channel 2
+      allowedChannels [
+        2
+      ]
+    }
+    Emitter {
+      name "emitter_1"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+  ]
+  controller "World_Controller1"
+  supervisor TRUE
+}
+DEF Guide_Ball Solid {
+  translation 1.08056 -0.03 1.20693
+  rotation 0 -1 0 -1.5708
+  children [
+    DEF BALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        emissiveColor 1 0 0
+        emissiveIntensity 10
+      }
+      geometry Sphere {
+        radius 0.0325
+        subdivision 4
+      }
+    }
+  ]
+  translationStep 0.001
+  rotationStep 0.001
+}
+DEF Box Solid {
+  translation 1.64 -0.07 0.4
+  children [
+    DEF BOX_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/textures/wooden_box_base_color.jpg"
+          ]
+        }
+        roughnessMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/textures/wooden_box_roughness.jpg"
+          ]
+        }
+        metalness 0
+        normalMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/textures/wooden_box_normal.jpg"
+          ]
+        }
+        occlusionMap ImageTexture {
+          url [
+            "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/textures/wooden_box_occlusion.jpg"
+          ]
+        }
+      }
+      geometry Box {
+        size 1.2 0.6 0.8
+      }
+    }
+  ]
+  name "wooden box"
+  model "wooden box"
+  boundingObject USE BOX_SHAPE
+}
+DEF ROBOT_A Robot {
+  translation -0.43 -0.45 0
+  children [
+    Receiver {
+      name "receiver_1"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Emitter {
+      name "emitter_1"
+      channel 1
+      allowedChannels [
+        1
+      ]
+    }
+    Shape {
+      appearance DEF base_link_material PBRAppearance {
+        baseColor 1 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "C:/Users/Juan.Rebollo/Home_SIM/meshes/base_link.STL"
+        ]
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.25063962632377773
+        axis 0 0 1
+        anchor 0 0 0.269
+      }
+      device [
+        RotationalMotor {
+          name "Joint_1"
+          minPosition -68.28
+          maxPosition 68.28
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "Joint_1_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.269
+        rotation 0 0 1 0.2506396263237781
+        children [
+          Shape {
+            appearance DEF Link_1_material PBRAppearance {
+              baseColor 1 1 0
+              roughness 1
+              metalness 0
+            }
+            geometry DEF Link_1 Mesh {
+              url [
+                "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_1.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              position 0.1368873361376571
+              axis 0 1 0
+              anchor 0.312 0.117 0.401
+            }
+            device [
+              RotationalMotor {
+                name "Joint_2"
+                minPosition -1.117
+                maxPosition 1.396
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "Joint_2_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.312 0.117 0.401
+              rotation 0 1 0 0.1368873361376584
+              children [
+                Shape {
+                  appearance DEF Link_2_material PBRAppearance {
+                    baseColor 1 1 0
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF Link_2 Mesh {
+                    url [
+                      "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_2.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 0.3431306392559843
+                    axis 0 1 0
+                    anchor 0 0.1215 1.075
+                  }
+                  device [
+                    RotationalMotor {
+                      name "Joint_3"
+                      minPosition -2.81
+                      maxPosition 1.4486
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "Joint_3_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 0.1215 1.075
+                    rotation 0 1 0 0.34313063925598464
+                    children [
+                      Shape {
+                        appearance DEF Link_3_material PBRAppearance {
+                          baseColor 1 1 0
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF Link_3 Mesh {
+                          url [
+                            "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_3.STL"
+                          ]
+                        }
+                      }
+                      HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 1.0272148340869167e-06
+                          anchor 1.005 -0.2385 0.225
+                        }
+                        device [
+                          RotationalMotor {
+                            name "Joint_4"
+                            minPosition -62.82
+                            maxPosition 62.82
+                            maxTorque 10000
+                          }
+                          PositionSensor {
+                            name "Joint_4_sensor"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 1.00525 -0.2385 0.225
+                          rotation 1 0 0 1.0272078478106424e-06
+                          children [
+                            Shape {
+                              appearance DEF Link_4_material PBRAppearance {
+                                baseColor 1 1 0
+                                roughness 1
+                                metalness 0
+                              }
+                              geometry DEF Link_4 Mesh {
+                                url [
+                                  "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_4.STL"
+                                ]
+                              }
+                            }
+                            HingeJoint {
+                              jointParameters HingeJointParameters {
+                                position 1.0907819087800883
+                                axis 0 1 0
+                                anchor 0.274 0.001 0
+                              }
+                              device [
+                                RotationalMotor {
+                                  name "Joint_5"
+                                  minPosition -1.5708
+                                  maxPosition 1.5708
+                                  maxTorque 10000
+                                }
+                                PositionSensor {
+                                  name "Joint_5_sensor"
+                                }
+                              ]
+                              endPoint Solid {
+                                translation 0.274 0.001 0
+                                rotation 0 1 0 1.0907819087800885
+                                children [
+                                  Shape {
+                                    appearance DEF Link_5_material PBRAppearance {
+                                      baseColor 1 1 0
+                                      roughness 1
+                                      metalness 0
+                                    }
+                                    geometry DEF Link_5 Mesh {
+                                      url [
+                                        "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_5.STL"
+                                      ]
+                                    }
+                                  }
+                                  HingeJoint {
+                                    jointParameters HingeJointParameters {
+                                      position 0.2697625460321193
+                                      anchor 0.181 0 0
+                                    }
+                                    device [
+                                      RotationalMotor {
+                                        name "Joint_6"
+                                        minPosition -62.82
+                                        maxPosition 62.82
+                                        maxTorque 10000
+                                      }
+                                      PositionSensor {
+                                        name "Joint_6_sensor"
+                                      }
+                                    ]
+                                    endPoint Solid {
+                                      translation 0.2081 4.282571799244005e-05 1.1590653096054802e-06
+                                      rotation 1 0 0 0.28888591554633086
+                                      children [
+                                        Shape {
+                                          appearance DEF Link_6_material PBRAppearance {
+                                            baseColor 0.866667 0.866667 0.890196
+                                            roughness 1
+                                            metalness 0
+                                          }
+                                          geometry DEF Link_6 Mesh {
+                                            url [
+                                              "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_6.STL"
+                                            ]
+                                          }
+                                        }
+                                        DEF End_Effector Solid {
+                                          translation 0.11568628091200317 -0.001314955377450959 0.0005216711515132477
+                                          rotation -0.7362249874072923 -0.6747578893579922 -0.05171613545383897 0.0126669919162867
+                                          children [
+                                            Connector {
+                                              rotation 1 0 0 3.14159
+                                              boundingObject Mesh {
+                                                url [
+                                                  "../meshes/end_effector.STL"
+                                                ]
+                                              }
+                                              physics Physics {
+                                                density -1
+                                                mass 10
+                                              }
+                                              type "active"
+                                              autoLock TRUE
+                                              distanceTolerance 0.1
+                                              axisTolerance 3.14
+                                              rotationTolerance 3.14
+                                            }
+                                            VacuumGripper {
+                                              children [
+                                                DEF CONNECTOR_DEVICE Connector {
+                                                  autoLock TRUE
+                                                  axisTolerance 3.14
+                                                  rotationTolerance 3.14
+                                                }
+                                              ]
+                                              boundingObject Mesh {
+                                                url [
+                                                  "../meshes/end_effector.STL"
+                                                ]
+                                              }
+                                              physics Physics {
+                                                density 1
+                                              }
+                                              isOn TRUE
+                                              tensileStrength 500
+                                              shearStrength 500
+                                            }
+                                            Shape {
+                                              appearance DEF end_effector_material PBRAppearance {
+                                                baseColor 0.866667 0.866667 0.890196
+                                                roughness 1
+                                                metalness 0
+                                              }
+                                              geometry DEF end_effector Mesh {
+                                                url [
+                                                  "C:/Users/Juan.Rebollo/Home_SIM/meshes/end_effector.STL"
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                          name "End_Effector"
+                                          boundingObject USE end_effector
+                                          physics Physics {
+                                            density 0.001
+                                          }
+                                        }
+                                      ]
+                                      name "Link_6"
+                                      boundingObject USE Link_6
+                                    }
+                                  }
+                                ]
+                                name "Link_5"
+                                boundingObject USE Link_5
+                              }
+                            }
+                          ]
+                          name "Link_4"
+                          boundingObject USE Link_4
+                        }
+                      }
+                    ]
+                    name "Link_3"
+                    boundingObject USE Link_3
+                  }
+                }
+              ]
+              name "Link_2"
+              boundingObject USE Link_2
+            }
+          }
+        ]
+        name "Link_1"
+        boundingObject USE Link_1
+      }
+    }
+  ]
+  name "ROBOT_A"
+  boundingObject USE base_link
+  controller "robot_controller2"
+  supervisor TRUE
+}
+DEF Sphere(1) Solid {
+  translation 1.21378 -0.0383273 0.93888
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(4)"
+}
+DEF Sphere(2) Solid {
+  translation 1.21083 -0.0350047 0.85
+  rotation 0 1 0 1.57081
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(1)"
+}
+DEF Sphere(3) Solid {
+  translation 1.21376 -0.0291214 1.01888
+  rotation 0.009561079226497808 0.9999085812502696 -0.009561114270709858 1.5708914228844628
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(3)"
+}
+DEF Sphere(4) Solid {
+  translation 1.01956 -1.29568 1.21888
+  rotation 0.009561079226497808 0.9999085812502696 -0.009561114270709858 1.5708914228844628
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(7)"
+}
+DEF Sphere(5) Solid {
+  translation 1.01707 -1.29501 1.04938
+  rotation -5.0847399998604454e-06 0.9999999999725542 5.388599999852106e-06 1.56
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(2)"
+}
+DEF Sphere(6) Solid {
+  translation 1.01684 -1.29789 1.225
+  rotation 0.009560592765853238 0.999908584866312 -0.009561222548133482 1.5708913207416344
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(5)"
+}
+DEF Sphere(7) Solid {
+  translation 1.34412 -0.0115196 0.93888
+  rotation 0.009561079226497808 0.9999085812502696 -0.009561114270709858 1.5708914228844628
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(6)"
+}
+DEF Sphere(8) Solid {
+  translation 1.33532 -0.0260237 0.851
+  rotation 0 1 0 1.5708
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(8)"
+}
+DEF Sphere(9) Solid {
+  translation 1.34206 -0.00287971 1.02198
+  rotation 0.008698420169898064 0.9999061987513177 -0.010579753552808956 1.5710388738108823
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(9)"
+}
+DEF Sphere(10) Solid {
+  translation 0.805192 -1.28965 1.2263
+  rotation 0.008698299830824638 0.9999061988875282 -0.010579839618262274 1.571038801166495
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(10)"
+}
+DEF Sphere(11) Solid {
+  translation 0.808999 -1.28319 1.04694
+  rotation 0.008697920476260581 0.9999062020777069 -0.01057984999536952 1.5710390445458948
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 0 1 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(11)"
+}
+DEF Sphere(12) Solid {
+  translation 0.805192 -1.28965 1.2263
+  rotation 0.008698299830824638 0.9999061988875282 -0.010579839618262274 1.571038801166495
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 0 0
+        }
+      }
+      geometry Sphere {
+        radius 0.05
+      }
+    }
+  ]
+  name "solid(12)"
+}
+DEF X_Mem_1 Solid {
+  translation 1.2051813587243942 -0.03285038519432061 0.8249980961170422
+  rotation 0.006812074232392697 -0.999953593102716 0.006812289308303878 1.5708181209225724
+  children [
+    Connector {
+      translation 0.025 0 0
+      rotation 1.7511568837365664e-44 1 6.4055234883422345e-43 6.661338147750939e-16
+      boundingObject Shape {
+        geometry Box {
+          size 0.005 1.5 0.05
+        }
+      }
+      physics Physics {
+        density 0.01
+      }
+      type "passive"
+      unilateralLock FALSE
+      unilateralUnlock FALSE
+      distanceTolerance 0.5
+      axisTolerance 3.14
+      rotationTolerance 3.14
+    }
+    DEF BACK Pose {
+      translation -0.02475 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_back_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_back_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_back_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_back_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0005 1.4999 0.0499
+          }
+        }
+      ]
+    }
+    DEF FRONT Pose {
+      translation 0.02475 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_front_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_front_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_front_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_front_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0005 1.4999 0.0499
+          }
+        }
+      ]
+    }
+    DEF RIGHT Pose {
+      translation 0 -0.74975 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_right_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_right_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_right_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_right_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0499 0.0005 0.0499
+          }
+        }
+      ]
+    }
+    DEF LEFT Pose {
+      translation 0 0.74975 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_left_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_left_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_left_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_left_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0499 0.0005 0.0499
+          }
+        }
+      ]
+    }
+    DEF BOTTOM Pose {
+      translation 0 0 -0.02475
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_bottom_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_bottom_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_bottom_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_bottom_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0499 1.4999 0.0005
+          }
+        }
+      ]
+    }
+    DEF TOP Pose {
+      translation 0 0 0.02475
+      rotation 0 1 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_top_base_color.jpg"
+              ]
+            }
+            roughness 0.7
+            roughnessMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_top_roughness.jpg"
+              ]
+            }
+            metalness 0
+            normalMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_top_normal.jpg"
+              ]
+            }
+            occlusionMap ImageTexture {
+              url [
+                "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/textures/cardboard/cardboard_top_occlusion.jpg"
+              ]
+            }
+          }
+          geometry Box {
+            size 0.0499 1.4999 0.0005
+          }
+        }
+      ]
+    }
+  ]
+  name "cardboard box"
+  model "cardboard box"
+  boundingObject Box {
+    size 0.05 1.5 0.05
+  }
+  physics Physics {
+    density -1
+    mass 10
+  }
+}
