@@ -1,4 +1,4 @@
-#VRML_SIM R2025a utf8
+#VRML_SIM R2023b utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
@@ -22,8 +22,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.09444070086896739 0.045375533720791277 -0.9944958596992405 1.7337673915829965
-  position 1.3304640927643478 2.325005903070712 1.1792680335429657
+  orientation 0.1289526633849168 0.11873326355868023 -0.9845169489301041 1.272170299544858
+  position -0.9287442664268357 4.978658869614821 1.9218839302374875
 }
 TexturedBackground {
 }
@@ -139,13 +139,13 @@ DEF ROBOT_A Robot {
       }
       geometry DEF base_link Mesh {
         url [
-          "C:/Users/Juan.Rebollo/Home_SIM/meshes/base_link.STL"
+          "../meshes/base_link.STL"
         ]
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.25063962632377773
+        position 0.27116915674630804
         axis 0 0 1
         anchor 0 0 0.269
       }
@@ -162,7 +162,7 @@ DEF ROBOT_A Robot {
       ]
       endPoint Solid {
         translation 0 0 0.269
-        rotation 0 0 1 0.2506396263237781
+        rotation 0 0 1 0.2711691567463076
         children [
           Shape {
             appearance DEF Link_1_material PBRAppearance {
@@ -172,13 +172,13 @@ DEF ROBOT_A Robot {
             }
             geometry DEF Link_1 Mesh {
               url [
-                "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_1.STL"
+                "../meshes/Link_1.STL"
               ]
             }
           }
           HingeJoint {
             jointParameters HingeJointParameters {
-              position 0.1368873361376571
+              position -0.023219307930422223
               axis 0 1 0
               anchor 0.312 0.117 0.401
             }
@@ -195,7 +195,7 @@ DEF ROBOT_A Robot {
             ]
             endPoint Solid {
               translation 0.312 0.117 0.401
-              rotation 0 1 0 0.1368873361376584
+              rotation 0 -1 0 0.023219307930422272
               children [
                 Shape {
                   appearance DEF Link_2_material PBRAppearance {
@@ -205,13 +205,13 @@ DEF ROBOT_A Robot {
                   }
                   geometry DEF Link_2 Mesh {
                     url [
-                      "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_2.STL"
+                      "../meshes/Link_2.STL"
                     ]
                   }
                 }
                 HingeJoint {
                   jointParameters HingeJointParameters {
-                    position 0.3431306392559843
+                    position 0.36194684772513575
                     axis 0 1 0
                     anchor 0 0.1215 1.075
                   }
@@ -228,7 +228,7 @@ DEF ROBOT_A Robot {
                   ]
                   endPoint Solid {
                     translation 0 0.1215 1.075
-                    rotation 0 1 0 0.34313063925598464
+                    rotation 0 1 0 0.3619468477251352
                     children [
                       Shape {
                         appearance DEF Link_3_material PBRAppearance {
@@ -238,13 +238,13 @@ DEF ROBOT_A Robot {
                         }
                         geometry DEF Link_3 Mesh {
                           url [
-                            "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_3.STL"
+                            "../meshes/Link_3.STL"
                           ]
                         }
                       }
                       HingeJoint {
                         jointParameters HingeJointParameters {
-                          position 1.0272148340869167e-06
+                          position 1.0431711509929272e-06
                           anchor 1.005 -0.2385 0.225
                         }
                         device [
@@ -260,7 +260,7 @@ DEF ROBOT_A Robot {
                         ]
                         endPoint Solid {
                           translation 1.00525 -0.2385 0.225
-                          rotation 1 0 0 1.0272078478106424e-06
+                          rotation 1 0 0 1.0430812835693478e-06
                           children [
                             Shape {
                               appearance DEF Link_4_material PBRAppearance {
@@ -270,13 +270,13 @@ DEF ROBOT_A Robot {
                               }
                               geometry DEF Link_4 Mesh {
                                 url [
-                                  "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_4.STL"
+                                  "../meshes/Link_4.STL"
                                 ]
                               }
                             }
                             HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 1.0907819087800883
+                                position 1.2320723259806083
                                 axis 0 1 0
                                 anchor 0.274 0.001 0
                               }
@@ -293,7 +293,7 @@ DEF ROBOT_A Robot {
                               ]
                               endPoint Solid {
                                 translation 0.274 0.001 0
-                                rotation 0 1 0 1.0907819087800885
+                                rotation 0 1 0 1.2320723259806083
                                 children [
                                   Shape {
                                     appearance DEF Link_5_material PBRAppearance {
@@ -303,13 +303,13 @@ DEF ROBOT_A Robot {
                                     }
                                     geometry DEF Link_5 Mesh {
                                       url [
-                                        "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_5.STL"
+                                        "../meshes/Link_5.STL"
                                       ]
                                     }
                                   }
                                   HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 0.2697625460321193
+                                      position 0.2711688101156233
                                       anchor 0.181 0 0
                                     }
                                     device [
@@ -324,8 +324,8 @@ DEF ROBOT_A Robot {
                                       }
                                     ]
                                     endPoint Solid {
-                                      translation 0.2081 4.282571799244005e-05 1.1590653096054802e-06
-                                      rotation 1 0 0 0.28888591554633086
+                                      translation 0.2081 4.282404569545565e-05 1.219288412747589e-06
+                                      rotation 1 0 0 0.29029217962983445
                                       children [
                                         Shape {
                                           appearance DEF Link_6_material PBRAppearance {
@@ -335,13 +335,13 @@ DEF ROBOT_A Robot {
                                           }
                                           geometry DEF Link_6 Mesh {
                                             url [
-                                              "C:/Users/Juan.Rebollo/Home_SIM/meshes/Link_6.STL"
+                                              "../meshes/Link_6.STL"
                                             ]
                                           }
                                         }
                                         DEF End_Effector Solid {
-                                          translation 0.11568628091200317 -0.001314955377450959 0.0005216711515132477
-                                          rotation -0.7362249874072923 -0.6747578893579922 -0.05171613545383897 0.0126669919162867
+                                          translation 0.11603564070304251 -0.0013142099726327107 0.0005241654707335286
+                                          rotation -0.736224987407242 -0.6747578893580476 -0.05171613545383006 0.012666991916288513
                                           children [
                                             Connector {
                                               rotation 1 0 0 3.14159
@@ -388,7 +388,7 @@ DEF ROBOT_A Robot {
                                               }
                                               geometry DEF end_effector Mesh {
                                                 url [
-                                                  "C:/Users/Juan.Rebollo/Home_SIM/meshes/end_effector.STL"
+                                                  "../meshes/end_effector.STL"
                                                 ]
                                               }
                                             }
@@ -640,8 +640,8 @@ DEF Sphere(12) Solid {
   name "solid(12)"
 }
 DEF X_Mem_1 Solid {
-  translation 1.2051813587243942 -0.03285038519432061 0.8249980961170422
-  rotation 0.006812074232392697 -0.999953593102716 0.006812289308303878 1.5708181209225724
+  translation 1.205448264657406 -0.032860910560147984 0.8249473191297529
+  rotation 0.007259069694817427 -0.9999473345548751 0.007254930996681557 1.5715481042840644
   children [
     Connector {
       translation 0.025 0 0
