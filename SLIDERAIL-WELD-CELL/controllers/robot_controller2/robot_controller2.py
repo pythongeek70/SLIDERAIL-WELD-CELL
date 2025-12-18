@@ -6,6 +6,7 @@ import time
 from controller import Supervisor, Emitter, Receiver, PositionSensor, VacuumGripper, Connector
 from scipy.spatial.transform import Rotation as R
 from ikpy.chain import Chain
+from pathlib import Path
 
 # Initialize Supervisor & Robot
 supervisor = Supervisor()
@@ -42,7 +43,8 @@ for obj in objects_to_track:
         absolute_position[obj] = node.getPosition()
         orientation[obj] = node.getOrientation()
 
-armChain = Chain.from_urdf_file("C:/Users/Juan.Rebollo/Home_SIM/urdf/ROBOT_A.urdf", active_links_mask=[False, True, True, True, True, True, True, False])
+urdf_path = Path(__file__).resolve().parents[2] / "urdf" / "ROBOT_A.urdf"
+armChain = Chain.from_urdf_file(str(urdf_path), active_links_mask=[False, True, True, True, True, True, True, False])
 
 # Joint Configuration
 joint_names = [f"Joint_{i}" for i in range(1, 7)]
@@ -181,7 +183,7 @@ while supervisor.step(timestep) != -1:
                     # ✅ Ensure the latest position is always used
                         absolute_position["End_Effector"] = supervisor.getFromDef("End_Effector").getPosition()
     
-                        print(f"📡 Updating End Effector Position: {absolute_position["End_Effector"]}")
+                        print(f'📡 Updating End Effector Position: {absolute_position["End_Effector"]}')
                         goto(sphere_position, sphere_orientation, threshold)
                   # Check if end effector is close enough to attach cross member
                     
@@ -193,7 +195,7 @@ while supervisor.step(timestep) != -1:
                         material = appearance.getField("material").getSFNode()
                         sphere_color = material.getField("diffuseColor").getSFVec3f()
                         sphere_err = np.linalg.norm(np.array(absolute_position["End_Effector"]) - np.array(sphere_position))
-                        print(f"End Effector Position: {absolute_position["End_Effector"]}")
+                        print(f'End Effector Position: {absolute_position["End_Effector"]}')
                         print(f"Sphere Error: {sphere_err}")
                         if sphere_color == [1, 1, 0] and sphere_err < threshold:
                             #print(f"Cross Member Position: {x_mem_position}")
