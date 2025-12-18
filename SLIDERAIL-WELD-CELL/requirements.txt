@@ -1,0 +1,4 @@
+ikpy
+numpy
+scipy
+pynput
