@@ -1,6 +1,6 @@
 SLIDERAIL Weld Cell Simulator
-This repository contains a robotic sliderail weld-cell simulator built in Webots, with Python controllers for robot motion, waypoint handling, and welding logic. The project is intended as a portable, clone-and-run simulation that demonstrates robotic programming, kinematics, and manufacturing automation concepts.
-The simulator was developed as part of a no-code / low-code robotic programming environment, where robot behavior is driven by world objects (waypoints, safe points, weld points) rather than hard-coded trajectories.
+This repository contains a robotic sliderail weld-cell simulator built in Webots, with Python controllers for robot motion, waypoint handling, and end-effector logic. The project is intended as a portable, clone-and-run simulation that demonstrates robotic programming, kinematics, and manufacturing automation concepts.
+The simulator was developed as part of a no-code / low-code robotic programming environment, where robot behavior is driven by world objects (waypoints, safe points, pick points, and release points) rather than hard-coded trajectories.
 
 What This Project Demonstrates
     • Industrial robotic pick-and-place operation for a sliderail weld cell (material handling only)
